@@ -3,10 +3,9 @@
  */
 public class Task1 {
     public static void main(String[] args) {
-        String numbers = "01:01:23,123-123-123\n" +
-                "00:04:00,223-125-123\n" +
-                "00:06:00,129-123-123\n" +
-                "10:16:20,129-123-123\n";
+        String numbers = "00:01:07,400-234-100\n" +
+                "00:05:01,223-125-123\n" +
+                "00:05:00,400-234-100\n";
         System.out.println(solution(numbers));
     }
 
@@ -19,11 +18,11 @@ public class Task1 {
             String[] data = line.split(",");
             int localSeconds = 0;
             for(String line1 : s.split("\n")){
-                if(data[1].equals( s.split("\n")[1])) {
+                if(data[1].equals( line1.split(",")[1])) {
                     localSeconds += calculateTime(line1.split(",")[0]);
                 }
             }
-            int localCash = calculateCash(localSeconds);
+            int localCash = calculateCash(calculateTime(data[0]));
             cash += localCash;
             if(maxSeconds < localSeconds){
                 maxSeconds = localSeconds;
